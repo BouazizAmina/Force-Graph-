@@ -14,10 +14,10 @@ d3.json("./ressource/data.json", function(error, graph) {
 
   var link = svg.append("g")
       .attr("class", "links")
-    .selectAll("line")
-    .data(graph.links)
-    .enter().append("line")
-      .attr("stroke-width", function(d) { return Math.sqrt(d.weight); });
+      .selectAll("line")
+      .data(graph.links)
+      .enter().append("line")
+        .attr("stroke-width", function(d) { return Math.sqrt(d.weight); });
 
   var node = svg.append("g")
       .attr("class", "nodes")
@@ -31,7 +31,6 @@ d3.json("./ressource/data.json", function(error, graph) {
     .attr("cx", function(d) { return d.value1; })
     .attr("cy", function(d) { return d.value2; });
 
-  // Create a drag handler and append it to the node object instead
   var drag_handler = d3.drag()
       .on("start", dragstarted)
       .on("drag", dragged)
@@ -46,8 +45,8 @@ d3.json("./ressource/data.json", function(error, graph) {
       .attr('x', 6)
       .attr('y', 3);
 
-  node.append("title")
-      .text(function(d) { return d.id; });
+  // node.append("title")
+  //     .text(function(d) { return d.id; });
 
   simulation
       .nodes(graph.nodes)
